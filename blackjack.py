@@ -46,7 +46,7 @@ def main():
     for _ in range(2):
         user_cards.append(deal_card())
         computer_cards.append(deal_card())
-
+    
     print(user_cards)
     print(computer_cards)
 
@@ -64,16 +64,19 @@ def main():
             continue
 
     computer_score = calculate_score(computer_cards)
-    if computer_score >= 17:
+    if computer_score == 0:
+        pass
+    elif computer_score >= 17:
         print(f"Computer cards are {computer_cards}")
         print(f"Computer score is {computer_score}")
-    while computer_score < 17:
-        print("Computer is thinking")
-        time.sleep(2)
-        computer_cards.append(deal_card())
-        print(f"Computer cards are now {computer_cards}")
-        computer_score = calculate_score(computer_cards)
-        print(f"Computer score is now {computer_score}")
+    else:
+        while computer_score < 17:
+            print("Computer is thinking")
+            time.sleep(2)
+            computer_cards.append(deal_card())
+            print(f"Computer cards are now {computer_cards}")
+            computer_score = calculate_score(computer_cards)
+            print(f"Computer score is now {computer_score}")
 
     print(compare(player_score, computer_score))
 
